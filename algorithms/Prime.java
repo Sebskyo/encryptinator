@@ -24,7 +24,7 @@ public class Prime {
         Random r = new Random();
         int k;
         do {
-            k = getPrime(r.nextInt(j));
+            k = getPrime(r.nextInt(j/4));
         } while(i%k == 0);
         return k;
     }

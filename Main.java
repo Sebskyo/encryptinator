@@ -10,8 +10,7 @@ import com.sebskyo.encryptinator.algorithms.KeySet;
 public class Main {
     public static void main (String[] args) {
         Prime.generatePrimes(10);
-        KeySet key = new KeySet();
+        KeySet key = new KeySet(100);
         key.printInfo();
-        //System.out.println(Utility.inverse(new int[][]{{44, 44},{17, 1}},44)[1][1]);
     }
 }

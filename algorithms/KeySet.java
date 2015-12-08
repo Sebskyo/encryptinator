@@ -8,17 +8,22 @@ public class KeySet {
     int totient; // (p-1)(q-1)
     int pvtKey;
 
-    public KeySet() {
+    public KeySet(int primeLimit) {
+        Prime.generatePrimes(primeLimit);
         Random r = new Random();
-        primes[0] = Prime.getPrime(r.nextInt(Prime.getLength()-1));
+        primes[0] = Prime.getPrime(r.nextInt(Prime.getLength()-(primeLimit/2))+(primeLimit/2));
         do {
-            primes[1] = Prime.getPrime(r.nextInt(Prime.getLength()-1));
+            primes[1] = Prime.getPrime(r.nextInt(Prime.getLength()-(primeLimit/2))+(primeLimit/2));
         } while(primes[1] == primes[0]);
         pubKey[0] = primes[0]*primes[1];
         totient = Utility.totient(primes[0], primes[1]);
         pubKey[1] = Prime.generateCoprime(totient);
         pvtKey = Utility.inverse(new int[][]{{totient, totient}, {pubKey[1], 1}}, totient)[1][1];
     }
+    public KeySet() {
+        this(25);
+    }
+
     public void printInfo() {
         System.out.println(primes[0] + " " + primes[1]);
         System.out.println(pubKey[0] + " " + pubKey[1]);
