@@ -9,8 +9,7 @@ import com.sebskyo.encryptinator.algorithms.KeySet;
  */
 public class Main {
     public static void main (String[] args) {
-        Prime.generatePrimes(10);
-        KeySet key = new KeySet(100);
+        KeySet key = new KeySet(25);
         key.printInfo();
     }
 }

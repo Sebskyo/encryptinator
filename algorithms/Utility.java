@@ -7,7 +7,7 @@ public class Utility {
     public static int totient(int i, int j) {
         return (i-1)*(j-1);
     }
-    public static int[][] inverse(int[][] table, int totient) { // [row][column]
+    private static int[][] findInverse(int[][] table, int totient) { // [row][column]
         if(table[1][0] == 1)
             return table;
 
@@ -24,6 +24,9 @@ public class Utility {
                 nextTable[1][c] += totient;
         }
 
-        return inverse(nextTable, totient);
+        return findInverse(nextTable, totient);
+    }
+    public static int inverse(int exponent, int totient) {
+        return findInverse(new int[][]{{totient, totient}, {exponent, 1}}, totient)[1][1];
     }
 }
