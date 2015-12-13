@@ -7,20 +7,20 @@ import java.util.Iterator;
  */
 class IntegerIterator implements Iterator<Integer> {
 
-    private int current = 1;
+	private int current = 1;
 
-    @Override
-    public boolean hasNext() {
-        return true;
-    }
+	@Override
+	public boolean hasNext() {
+		return true;
+	}
 
-    @Override
-    public Integer next() {
-        return ++current;
-    }
+	@Override
+	public Integer next() {
+		return ++current;
+	}
 
-    @Override
-    public void remove() {
+	@Override
+	public void remove() {
 
-    }
+	}
 }
