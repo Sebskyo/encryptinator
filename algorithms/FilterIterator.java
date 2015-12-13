@@ -3,7 +3,7 @@ package com.sebskyo.encryptinator.algorithms;
 import java.util.Iterator;
 
 /**
- * Author: Sebastian Vikkelsø Elleholm
+ * The FilterIterator class is like the IntegerIterator, but only returns the next number of which the filter is not a divisor of
  */
 class FilterIterator implements Iterator<Integer> {
 

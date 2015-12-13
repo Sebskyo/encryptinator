@@ -3,19 +3,44 @@ package com.sebskyo.encryptinator.algorithms;
 import java.util.Random;
 import java.util.Iterator;
 
+/**
+ * The static Prime class handles all algorithms to do with (co)prime numbers
+ */
 public class Prime {
-	private static int[] primes = generatePrimes(10);
+	private static int[] primes;
 
-	public static int[] generatePrimes(int limit) {
+	public static void sieveGenerate(int limit) {
+		// Preparing statements
 		int[] tmpPrimes = new int[limit];
 		Iterator<Integer> iterator = new IntegerIterator();
 		for (int i = 0; i < limit; i++) {
-			int next = iterator.next();
-			tmpPrimes[i] = next;
-			iterator = new FilterIterator(iterator, next);
+			int next = iterator.next(); // Gets next prime
+			tmpPrimes[i] = next; // Stores it
+			iterator = new FilterIterator(iterator, next); // Creates new filter to use in next iteration
 		}
-		primes = tmpPrimes;
-		return tmpPrimes;
+		primes = tmpPrimes; // Parses data to the permanent array
+	}
+
+	public static void generatePrimes(int limit) {
+		// Preparing statements
+		int[] tmpPrimes = new int[limit];
+		int index = 1;
+		tmpPrimes[0] = 2;
+		tmpPrimes[limit-1] = 0;
+		for(int i = 3; tmpPrimes[limit-1] == 0; i++) {
+			boolean isPrime = true;
+			for(int j = 2; j*j <= i; j++) {
+				if(i%j == 0) { // The actual checker
+					isPrime = false;
+					break;
+				}
+			}
+			if(isPrime) {
+				tmpPrimes[index] = i; // Stores the found prime
+				index++; // Moves to next index
+			}
+		}
+		primes = tmpPrimes; // Parses data to the permanent array
 	}
 
 	public static int generateCoprime(int i) {

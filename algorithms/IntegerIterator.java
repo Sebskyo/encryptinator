@@ -3,7 +3,7 @@ package com.sebskyo.encryptinator.algorithms;
 import java.util.Iterator;
 
 /**
- * Author: Sebastian Vikkelsø Elleholm
+ * The IntegerIterator class always returns the next integer, for use in generating primes
  */
 class IntegerIterator implements Iterator<Integer> {
 

@@ -1,5 +1,9 @@
 package com.sebskyo.encryptinator.algorithms;
 
+/**
+ * The static Utility class contains non-prime related algorithms for use in various places of the program
+ * note: gcd is not actually used anywhere, but is used extensively in tested, which is why it's still here
+ */
 public class Utility {
 	public static int gcd(int i, int j) {
 		return j == 0 ? i : gcd(j, i % j);
@@ -28,6 +32,7 @@ public class Utility {
 		return inverse(nextTable, totient);
 	}
 
+	// Acts as a "initiater" for the actual algorithm, prevents breaking the abstraction barrier
 	public static int inverse(int exponent, int totient) {
 		return inverse(new int[][]{{totient, totient}, {exponent, 1}}, totient)[1][1];
 	}
